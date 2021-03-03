@@ -12,15 +12,23 @@
 
 [[plugins]]
   package = "netlify-plugin-cypress"
+
   # let's first test the site before Gatsby builds it
   [plugins.inputs.preBuild]
+    enable = true
     start = 'npm run develop'
     wait-on = 'http://localhost:8000'
     wait-on-timeout = '30' # seconds
     record = true
     group = '1: testing develop site'
+
   # then Netlify builds the site
   # and then our tests will run again, testing the built production version
+  [plugins.inputs.postBuild]
+    enable = true
+    record = true
+    group = '2: testing built site'
+
+  # but we do not want to run tests against the deployed site
   [plugins.inputs]
-  record = true
-  group = '2: testing built site'
+    enable = false
