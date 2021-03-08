@@ -9,6 +9,8 @@
     CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
     # set TERM variable for terminal output
     TERM = "xterm"
+    # prevent progress messages
+    CI = "1"
 
 [[plugins]]
   package = "netlify-plugin-cypress"
@@ -16,7 +18,7 @@
   # let's first test the site before Gatsby builds it
   [plugins.inputs.preBuild]
     enable = true
-    start = 'npm run develop'
+    start = 'gatsby develop'
     wait-on = 'http://localhost:8000'
     wait-on-timeout = '30' # seconds
     record = true
@@ -25,6 +27,8 @@
   # then Netlify builds the site
   # and then our tests will run again, testing the built production version
   [plugins.inputs.postBuild]
+    # investigating why preBuild server has not been stopped
+    # https://github.com/cypress-io/netlify-plugin-cypress/issues/119
     enable = true
     record = true
     group = '2: testing built site'
