@@ -18,7 +18,7 @@
   # let's first test the site before Gatsby builds it
   [plugins.inputs.preBuild]
     enable = true
-    start = 'npm run develop'
+    start = 'gatsby develop'
     wait-on = 'http://localhost:8000'
     wait-on-timeout = '30' # seconds
     record = false
