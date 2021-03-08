@@ -21,7 +21,7 @@
     start = 'npm run develop'
     wait-on = 'http://localhost:8000'
     wait-on-timeout = '30' # seconds
-    record = true
+    record = false
     group = '1: testing develop site'
 
   # then Netlify builds the site
