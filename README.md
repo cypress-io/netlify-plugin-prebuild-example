@@ -16,5 +16,13 @@ Find recorded test results and artifacts at [![Cypress Dashboard](https://img.sh
 
 ![Netlify to Cypress Dashboard to GH Integration checks](images/netlify-to-cy-gh-app-checks.png)
 
+## Debugging
+
+Locally
+
+```
+DEBUG=netlify-plugin-cypress npx netlify build
+```
+
 [renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg
 [renovate-app]: https://renovateapp.com/

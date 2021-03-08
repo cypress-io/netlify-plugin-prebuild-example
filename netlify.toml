@@ -9,6 +9,8 @@
     CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
     # set TERM variable for terminal output
     TERM = "xterm"
+    # prevent progress messages
+    CI = "1"
 
 [[plugins]]
   package = "netlify-plugin-cypress"
@@ -25,7 +27,9 @@
   # then Netlify builds the site
   # and then our tests will run again, testing the built production version
   [plugins.inputs.postBuild]
-    enable = true
+    # investigating why preBuild server has not been stopped
+    # https://github.com/cypress-io/netlify-plugin-cypress/issues/119
+    enable = false
     record = true
     group = '2: testing built site'
 
