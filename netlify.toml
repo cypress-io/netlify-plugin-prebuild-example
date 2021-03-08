@@ -21,7 +21,7 @@
     start = 'gatsby develop'
     wait-on = 'http://localhost:8000'
     wait-on-timeout = '30' # seconds
-    record = false
+    record = true
     group = '1: testing develop site'
 
   # then Netlify builds the site
@@ -29,7 +29,7 @@
   [plugins.inputs.postBuild]
     # investigating why preBuild server has not been stopped
     # https://github.com/cypress-io/netlify-plugin-cypress/issues/119
-    enable = false
+    enable = true
     record = true
     group = '2: testing built site'
 
